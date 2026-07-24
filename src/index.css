@@ -1,0 +1,177 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme — warm paper with soft indigo tint */
+    --c-ink: 250 250 251;
+    --c-charcoal: 243 243 247;
+    --c-surface: 255 255 255;
+    --c-line: 228 228 236;
+    --c-mist: 82 82 98;
+    --c-cream: 24 24 34;
+    --c-accent-soft: 79 92 218;
+    --shadow-card: 0 1px 2px rgb(18 18 30 / 0.04), 0 8px 24px rgb(18 18 30 / 0.06);
+    --shadow-card-hover: 0 2px 4px rgb(18 18 30 / 0.05), 0 16px 40px rgb(18 18 30 / 0.1), 0 0 0 1px rgb(109 124 255 / 0.25);
+    --shadow-panel: 0 24px 64px rgb(18 18 30 / 0.12);
+    --glow-strength: 0.14;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    @apply bg-ink text-cream font-body antialiased;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    @apply bg-accent/30 text-cream;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--c-charcoal));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--c-line));
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(var(--c-mist) / 0.5);
+  }
+}
+
+@layer components {
+  .container-lux {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[11px] sm:text-xs uppercase tracking-[0.3em] text-accent-soft;
+  }
+
+  .hairline {
+    @apply border border-line;
+  }
+
+  .glass {
+    @apply backdrop-blur-xl;
+    background-color: rgb(var(--c-surface) / 0.65);
+    border: 1px solid rgb(var(--c-line) / 0.8);
+    box-shadow: var(--shadow-card);
+  }
+
+  /* Unified premium card */
+  .card {
+    @apply rounded-2xl border border-line;
+    background:
+      linear-gradient(rgb(var(--c-surface)), rgb(var(--c-surface))) padding-box,
+      linear-gradient(135deg, rgb(var(--c-line)), rgb(var(--c-line) / 0.4)) border-box;
+    box-shadow: var(--shadow-card);
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.35s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  /* Small pill tag */
+  .chip {
+    @apply inline-flex items-center rounded-full border border-line bg-surface/70 px-3 py-1 font-mono text-[11px] text-mist transition-colors duration-300;
+  }
+
+  /* Aurora section glow — adapts intensity per theme */
+  .aurora {
+    background:
+      radial-gradient(ellipse 60% 45% at 25% 0%, rgb(109 124 255 / var(--glow-strength)), transparent 65%),
+      radial-gradient(ellipse 50% 40% at 80% 10%, rgb(142 109 255 / calc(var(--glow-strength) * 0.7)), transparent 65%);
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(rgb(var(--c-cream) / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--c-cream) / 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-soft via-accent to-accent-violet bg-clip-text text-transparent;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-32px);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(32px);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.96);
+    transition:
+      opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal.is-visible,
+  .reveal-left.is-visible,
+  .reveal-right.is-visible,
+  .reveal-scale.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal,
+  .reveal-left,
+  .reveal-right,
+  .reveal-scale {
+    opacity: 1;
+    transform: none;
+  }
+}
