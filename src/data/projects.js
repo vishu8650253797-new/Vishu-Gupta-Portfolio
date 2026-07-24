@@ -10,7 +10,7 @@ export const projects = [
       'A premium Spanish fine-dining website with tabbed menu browsing, reservations with saved bookings, filterable gallery with lightbox, events, and a dark luxury design system.',
     technologies: ['React.js', 'Tailwind CSS', 'React Router'],
     image: '/images/levante.png',
-    liveUrl: 'https://levante-restaurant-bar.netlify.app/',
+    liveUrl: 'https://levante-restaurant-tan.vercel.app/',
     githubUrl: 'https://github.com/vishu8650253797-new',
     featured: false,
   },
@@ -23,10 +23,23 @@ export const projects = [
       'A movie and event ticket booking web application with browsing, seat selection, and a smooth end-to-end booking flow — built with a modern, responsive React UI.',
     technologies: ['React.js', 'JavaScript', 'Tailwind CSS'],
     image: '/images/bookmyticket.png',
-    liveUrl: 'https://bookmyticket-181177.netlify.app/',
+    liveUrl: 'https://book-my-ticket-sable.vercel.app/',
+    githubUrl: 'https://github.com/vishu8650253797-new',
+    featured: false,
+  },
+  {
+    id: 3,
+    title: 'Lumière — Travel Website',
+    category: 'React',
+    tags: ['React', 'Travel'],
+    description:
+      'A refined travel platform featuring curated destination packages, immersive imagery, and a seamless booking flow for bespoke global experiences.',
+    technologies: ['React.js', 'Tailwind CSS', 'JavaScript'],
+    image: '/images/lumiere.png',
+    liveUrl: 'https://lumiere-travel-website.vercel.app/',
     githubUrl: 'https://github.com/vishu8650253797-new',
     featured: false,
   },
 ]
 
-export const projectFilters = ['All', 'React', 'Full Stack']
+export const projectFilters = ['All', 'React', 'Full Stack', 'Travel']

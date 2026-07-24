@@ -48,6 +48,21 @@ export default function Navbar() {
     }
   }, [menuOpen])
 
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === 'Escape' && menuOpen) setMenuOpen(false)
+    }
+    const onResize = () => {
+      if (window.innerWidth >= 1024 && menuOpen) setMenuOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    window.addEventListener('resize', onResize)
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      window.removeEventListener('resize', onResize)
+    }
+  }, [menuOpen])
+
   const closeMenu = () => setMenuOpen(false)
 
   return (
@@ -129,6 +144,8 @@ export default function Navbar() {
 
       {/* Mobile full-screen menu */}
       <div
+        aria-hidden={!menuOpen}
+        inert={menuOpen ? undefined : ''}
         className={`fixed inset-0 top-[84px] z-40 bg-ink/95 backdrop-blur-xl transition-all duration-500 ease-lux lg:hidden ${
           menuOpen ? 'visible opacity-100' : 'invisible opacity-0'
         }`}

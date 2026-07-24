@@ -45,7 +45,7 @@ function validate(form) {
 }
 
 const inputClasses = (hasError) =>
-  `w-full rounded-xl border bg-surface/60 px-4 py-3.5 text-sm text-cream placeholder:text-mist/50 outline-none transition-all duration-300 ease-lux focus:bg-surface ${
+  `w-full rounded-xl border bg-surface/60 px-4 py-3.5 text-base sm:text-sm text-cream placeholder:text-mist/50 outline-none transition-all duration-300 ease-lux focus:bg-surface ${
     hasError
       ? 'border-red-400/60 focus:border-red-400'
       : 'border-line focus:border-accent/60 focus:shadow-[0_0_20px_rgba(109,124,255,0.12)]'
@@ -241,8 +241,8 @@ export default function Contact() {
                 {errors.message && <p className="mt-1.5 text-xs text-red-500">{errors.message}</p>}
               </div>
 
-              <div className="flex flex-wrap items-center gap-5 pt-2">
-                <Button type="submit" variant="primary" disabled={status === 'loading'}>
+              <div className="flex flex-col items-stretch gap-5 pt-2 sm:flex-row sm:items-center">
+                <Button type="submit" variant="primary" className="w-full justify-center sm:w-auto" disabled={status === 'loading'}>
                   {status === 'loading' ? 'Sending…' : 'Send Message'}
                 </Button>
                 <div aria-live="polite">

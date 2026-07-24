@@ -92,9 +92,9 @@ export default function Hero() {
       <div className="absolute inset-x-0 top-0 h-[70%] aurora" aria-hidden="true" />
 
       <div className="container-lux relative pt-36 pb-20 sm:pt-44 sm:pb-24">
-        <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-10">
+        <div className="grid min-w-0 items-center gap-16 lg:grid-cols-2 lg:gap-10">
           {/* Left — copy */}
-          <div>
+          <div className="min-w-0">
             <div className={entrance(0)} style={{ transitionDelay: '100ms' }}>
               <div className="mb-6 inline-flex items-center gap-2.5 rounded-full border border-line bg-surface/60 px-4 py-1.5">
                 <span className="relative flex h-2 w-2">
@@ -128,13 +128,13 @@ export default function Hero() {
             </p>
 
             <div
-              className={`mt-9 flex flex-wrap gap-4 ${entrance(0)}`}
+              className={`mt-9 flex flex-col gap-4 sm:flex-row ${entrance(0)}`}
               style={{ transitionDelay: '540ms' }}
             >
-              <Button href="#projects" variant="primary">
+              <Button href="#projects" variant="primary" className="w-full justify-center sm:w-auto">
                 View My Work
               </Button>
-              <Button href="#contact" variant="outline">
+              <Button href="#contact" variant="outline" className="w-full justify-center sm:w-auto">
                 Let&apos;s Work Together
               </Button>
             </div>
@@ -142,10 +142,10 @@ export default function Hero() {
 
           {/* Right — visual */}
           <div
-            className={`relative mx-auto w-full max-w-md lg:max-w-none ${entrance(0)}`}
+            className={`relative min-w-0 mx-auto w-full max-w-md lg:max-w-none ${entrance(0)}`}
             style={{ transitionDelay: '500ms' }}
           >
-            <div className="relative px-8 py-6 sm:px-12 sm:py-10">
+            <div className="relative min-w-0 px-8 py-6 sm:px-12 sm:py-10">
               {/* Code panel */}
               <div className="glass relative z-10 rounded-2xl p-5 sm:p-7" style={{ boxShadow: 'var(--shadow-panel)' }}>
                 <div className="mb-5 flex items-center gap-2">
@@ -154,7 +154,7 @@ export default function Hero() {
                   <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/60" />
                   <span className="ml-3 font-mono text-[11px] text-mist">developer.js</span>
                 </div>
-                <pre className="font-mono text-[12px] sm:text-[13px] leading-7 text-cream">
+                <pre className="overflow-x-auto font-mono text-[12px] sm:text-[13px] leading-7 text-cream">
                   {CODE_LINES.map((line, i) => (
                     <div key={i} style={{ paddingLeft: `${line.indent * 1.25}rem` }}>
                       {line.content}

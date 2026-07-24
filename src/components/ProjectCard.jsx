@@ -4,7 +4,7 @@ import { ExternalLinkIcon, GithubMark } from './Icons'
 export default function ProjectCard({ project }) {
   return (
     <ScrollReveal variant="reveal" threshold={0.1}>
-      <article className="group grid gap-8 lg:grid-cols-12 lg:items-center">
+      <article className="group grid min-w-0 gap-8 lg:grid-cols-12 lg:items-center">
         {/* Image */}
         <div className="card card-hover overflow-hidden rounded-2xl lg:col-span-7">
           <div className="relative aspect-[16/10] overflow-hidden bg-surface">
