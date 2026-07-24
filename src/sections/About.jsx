@@ -14,25 +14,21 @@ export default function About() {
     <section id="about" className="relative bg-charcoal py-24 sm:py-32">
       <div className="container-lux">
         <div className="grid gap-14 lg:grid-cols-2 lg:gap-20">
-          {/* Left — identity visual */}
-          <ScrollReveal variant="reveal-left" className="order-2 lg:order-1">
+          {/* Left — full photo */}
+          <ScrollReveal variant="reveal-left" className="order-1">
             <div className="relative">
               <div
                 className="absolute -left-6 -top-6 h-40 w-40 rounded-full opacity-25"
                 style={{ background: 'radial-gradient(circle, rgba(109,124,255,0.5) 0%, transparent 70%)' }}
                 aria-hidden="true"
               />
-              <div className="card relative rounded-3xl p-7 sm:p-9">
-                <div className="flex items-center gap-4 border-b border-line pb-6">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-accent to-accent-violet font-display text-xl font-bold text-white shadow-[0_8px_24px_rgba(109,124,255,0.35)]">
-                    VG
-                  </div>
-                  <div>
-                    <p className="font-display text-lg font-semibold text-cream">Vishu Gupta</p>
-                    <p className="font-mono text-xs text-accent-soft">Full-Stack Developer</p>
-                  </div>
-                </div>
-                <ul className="mt-6 space-y-5">
+              <div className="card relative rounded-3xl p-5 sm:p-7">
+                <img
+                  src="/images/IMG_7198-941x941.jpg"
+                  alt="Vishu Gupta"
+                  className="w-full rounded-2xl object-cover shadow-[0_8px_32px_rgba(18,18,30,0.12)]"
+                />
+                <ul className="mt-6 space-y-5 border-t border-line pt-6">
                   {IDENTITY_ROWS.map((row) => (
                     <li key={row.label} className="flex items-start gap-4">
                       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-accent/10 text-accent-soft">
@@ -52,7 +48,7 @@ export default function About() {
           </ScrollReveal>
 
           {/* Right — introduction */}
-          <div className="order-1 lg:order-2">
+          <div className="order-2">
             <ScrollReveal>
               <p className="eyebrow mb-4">About Me</p>
             </ScrollReveal>

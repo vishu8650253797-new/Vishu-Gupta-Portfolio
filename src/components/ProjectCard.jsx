@@ -38,12 +38,12 @@ export default function ProjectCard({ project }) {
             ))}
           </ul>
 
-          <div className="mt-7 flex flex-wrap items-center gap-5">
+          <div className="mt-7 flex flex-wrap items-center gap-4">
             <a
               href={project.liveUrl}
               target={project.liveUrl.startsWith('http') ? '_blank' : undefined}
               rel={project.liveUrl.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="group/link inline-flex items-center gap-2 text-sm font-medium text-cream transition-colors duration-300 hover:text-accent-soft"
+              className="group/link inline-flex items-center gap-2 rounded-full bg-cream px-5 py-2.5 text-sm font-semibold text-ink shadow-[0_4px_14px_rgba(24,24,34,0.08)] transition-all duration-300 ease-lux hover:-translate-y-0.5 hover:bg-cream/90 hover:shadow-[0_6px_20px_rgba(24,24,34,0.14)]"
             >
               Live Demo
               <ExternalLinkIcon className="h-3.5 w-3.5 transition-transform duration-300 ease-lux group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
@@ -52,7 +52,7 @@ export default function ProjectCard({ project }) {
               href={project.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group/link inline-flex items-center gap-2 text-sm font-medium text-mist transition-colors duration-300 hover:text-cream"
+              className="group/link inline-flex items-center gap-2 rounded-full border border-line bg-surface/60 px-5 py-2.5 text-sm font-semibold text-cream shadow-[0_4px_14px_rgba(24,24,34,0.04)] transition-all duration-300 ease-lux hover:-translate-y-0.5 hover:border-accent/40 hover:bg-surface hover:text-accent-soft hover:shadow-[0_6px_20px_rgba(109,124,255,0.12)]"
             >
               GitHub
               <GithubMark className="h-3.5 w-3.5" />
