@@ -25,6 +25,8 @@ export default function Button({
   type,
   disabled = false,
   className = '',
+  download,
+  target,
 }) {
   const ref = useRef(null)
 
@@ -62,7 +64,14 @@ export default function Button({
 
   if (href) {
     return (
-      <a href={href} onClick={onClick} {...props}>
+      <a
+        href={href}
+        onClick={onClick}
+        download={download}
+        target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+        {...props}
+      >
         {children}
         {showArrow && <ArrowIcon />}
       </a>

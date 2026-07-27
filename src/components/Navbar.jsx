@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import ResumeModal from './ResumeModal'
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
@@ -15,6 +16,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const [progress, setProgress] = useState(0)
+  const [resumeOpen, setResumeOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => {
@@ -112,6 +114,13 @@ export default function Navbar() {
         </ul>
 
         <div className="flex items-center gap-3">
+          <button
+            type="button"
+            onClick={() => setResumeOpen(true)}
+            className="hidden lg:inline-flex items-center gap-2 rounded-full border border-line bg-surface/50 px-5 py-2.5 text-[13px] font-semibold text-cream transition-all duration-300 ease-lux hover:border-accent/60 hover:bg-surface hover:shadow-[0_8px_24px_rgba(109,124,255,0.15)]"
+          >
+            Resume
+          </button>
           <a
             href="#contact"
             className="hidden lg:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent-violet px-5 py-2.5 text-[13px] font-semibold text-white transition-all duration-300 ease-lux hover:shadow-[0_8px_24px_rgba(109,124,255,0.4)] hover:brightness-110"
@@ -177,16 +186,30 @@ export default function Navbar() {
             }`}
             style={{ transitionDelay: menuOpen ? '580ms' : '0ms' }}
           >
-            <a
-              href="#contact"
-              onClick={closeMenu}
-              className="inline-flex items-center gap-2 rounded-sm bg-cream px-7 py-3.5 text-sm font-medium text-ink"
-            >
-              Let&apos;s Talk
-            </a>
+            <div className="flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  closeMenu()
+                  setResumeOpen(true)
+                }}
+                className="inline-flex items-center gap-2 rounded-sm border border-line bg-surface/50 px-7 py-3.5 text-sm font-medium text-cream"
+              >
+                Resume
+              </button>
+              <a
+                href="#contact"
+                onClick={closeMenu}
+                className="inline-flex items-center gap-2 rounded-sm bg-cream px-7 py-3.5 text-sm font-medium text-ink"
+              >
+                Let&apos;s Talk
+              </a>
+            </div>
           </li>
         </ul>
       </div>
+
+      <ResumeModal open={resumeOpen} onClose={() => setResumeOpen(false)} />
     </header>
   )
 }
